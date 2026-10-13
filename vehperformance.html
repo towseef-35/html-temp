@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VEHICLE PERFORMA INVOICE</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #fff;
+      color: #000;
+      font-family: "Times New Roman", Times, "Traditional Arabic", "Segoe UI", Tahoma, serif;
+      font-size: 13px;
+      line-height: 1.3;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .page {
+      width: 794px;
+      height: 1123px;
+      box-sizing: border-box;
+      padding: 83px 57px 57px;
+      overflow: hidden;
+      margin: 0 auto;
+      background: #fff;
+      position: relative;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td,
+    th {
+      border: 1px solid #000;
+      padding: 6px;
+    }
+
+    .ltr {
+      direction: ltr;
+      text-align: left;
+      unicode-bidi: isolate;
+    }
+
+    .rtl {
+      direction: rtl;
+      text-align: right;
+      unicode-bidi: isolate;
+    }
+
+    /* ---------- Top header ---------- */
+    .top-bar {
+      position: relative;
+      height: 14px;
+      margin-bottom: 8px;
+    }
+
+    .top-bar .vat {
+      position: absolute;
+      left: 0;
+      top: 0;
+      direction: ltr;
+      text-align: left;
+      white-space: nowrap;
+      font-size: 13px;
+    }
+
+    .top-bar .seller-ar {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      transform: translateX(-50%);
+      direction: rtl;
+      text-align: center;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .title-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-top: 4px;
+      margin-bottom: 12px;
+    }
+
+    .title-row h1 {
+      margin: 0;
+      padding: 0;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.15px;
+      text-transform: uppercase;
+      direction: ltr;
+      text-align: left;
+    }
+
+    .title-row .title-ar {
+      direction: rtl;
+      text-align: right;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* ---------- Info columns ---------- */
+    .info {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 23px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      line-height: 30px;
+    }
+
+    .info .col-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 2px;
+      border-bottom: 1px solid #000;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+
+    .info .col-head .en {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .info .col-head .ar {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .addr-block {
+      margin-bottom: 6px;
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .addr-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 1px;
+    }
+
+    .addr-line .en {
+      direction: ltr;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .addr-line .ar {
+      direction: rtl;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .cus-vat {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      font-size: 13px;
+      margin-top: 10px;
+    }
+
+    .cus-vat .lab-en {
+      direction: ltr;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .cus-vat .val {
+      direction: ltr;
+      text-align: left;
+      flex: 1 1 auto;
+      padding: 0 4px;
+    }
+
+    .cus-vat .lab-ar {
+      direction: rtl;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .kv-row {
+      display: grid;
+      grid-template-columns: 30% 40% 30%;
+      align-items: baseline;
+      column-gap: 2px;
+      margin-bottom: 4px;
+      font-size: 13px;
+      min-height: 13px;
+    }
+
+    .kv-row.date-row {
+      margin-top: 4px;
+    }
+
+    .kv-row.ref-row {
+      margin-top: 6px;
+    }
+
+    .kv-row .lab-en {
+      direction: ltr;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .kv-row .val {
+      direction: ltr;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .kv-row .lab-ar {
+      direction: rtl;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ---------- Vehicle details ---------- */
+    .vehicle {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13px;
+      margin-top: 100px;
+      margin-bottom: 106px;
+     
+    }
+
+    .vehicle th,
+    .vehicle td {
+      border: 1px solid #d3d3d3;
+      padding: 2px 4px;
+      vertical-align: middle;
+      font-weight: 400;
+      height: 17px;
+    }
+
+    .vehicle thead th {
+      background: transparent;
+    }
+
+    .vehicle .h-en {
+      direction: ltr;
+      text-align: left;
+      width: 50%;
+    }
+
+    .vehicle .h-ar {
+      direction: rtl;
+      text-align: right;
+      width: 50%;
+    }
+
+    .vehicle .le {
+      direction: ltr;
+      text-align: left;
+      white-space: nowrap;
+      width: 10%;
+      font-size: 12px;
+    }
+
+    .vehicle .v {
+      direction: ltr;
+      text-align: center;
+      width: 24%;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    .vehicle .la {
+      direction: rtl;
+      text-align: right;
+      white-space: nowrap;
+      width: 16%;
+      font-size: 12px;
+    }
+
+    /* ---------- Price summary ---------- */
+    .prices-wrap {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 57px;
+      line-height: 20px;
+    }
+
+    .prices {
+      width: 51%;
+    }
+
+    .prices table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13px;
+    }
+
+    .prices td {
+      border: 0;
+      padding: 4px 2px;
+      vertical-align: middle;
+    }
+
+    .prices .pe {
+      width: 38%;
+      direction: ltr;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .prices .pv {
+      width: 24%;
+      direction: ltr;
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .prices .pa {
+      width: 38%;
+      direction: rtl;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .prices .dash td {
+      padding-top: 2px;
+      padding-bottom: 2px;
+    }
+
+    .dash-line {
+      display: block;
+      width: 100%;
+      height: 0;
+      border: 0;
+      border-top: 2px dashed #000;
+      margin: 2px 0;
+    }
+
+    .prices .total td {
+      font-weight: 700;
+      padding-top: 5px;
+    }
+
+    /* ---------- Signature ---------- */
+    .signature {
+      width: 155px;
+      margin: 8px 0 0 234px;
+      text-align: center;
+    }
+
+    .signature .label {
+      direction: rtl;
+      text-align: center;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .signature .sig-value {
+      min-height: 14px;
+      direction: ltr;
+      text-align: center;
+      margin-bottom: 2px;
+      line-height: 1.2;
+    }
+
+    .signature .sig-value:empty {
+      display: none;
+    }
+
+    .signature .sig-value img {
+      max-width: 100%;
+      max-height: 28px;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .signature .sig-line {
+      display: block;
+      width: 100%;
+      border: 0;
+      border-top: 1px solid #000;
+      margin: 0;
+      height: 0;
+    }
+
+    @media screen {
+      body {
+        background: #cfcfcf;
+      }
+
+      .page {
+        box-shadow: 0 3px 20px rgba(0, 0, 0, 0.18);
+        margin: 18px auto;
+      }
+    }
+
+    @media print {
+      html,
+      body {
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="page">
+    <!-- 1. Header -->
+    <div class="top-bar">
+      <div class="vat">VAT No: {{companyVat}}</div>
+      <div class="seller-ar">شركة ناصر مطر المطيري للسيارات</div>
+    </div>
+
+    <!-- 2. Invoice Title -->
+    <div class="title-row">
+      <h1>VEHICLE PERFORMANCE INVOICE</h1>
+      <div class="title-ar">فاتورة مبيعات - ض.ق.م</div>
+    </div>
+
+    <!-- Company / Customer info + Invoice details -->
+    <section class="info">
+      <div class="col">
+        <div class="col-head">
+          <span class="en">Invoice Name &amp; Address:</span>
+          <span class="ar">اسم وعنوان الحساب:</span>
+        </div>
+
+        <div class="addr-block">
+          <div class="addr-line">
+            <span class="en">National Auto Trust Company</span>
+            <span class="ar">شركة الثقة الوطنية للسيارات - المبنى</span>
+          </div>
+          <div class="addr-line">
+            <span class="en">- Main Building Avant Masic</span>
+            <span class="ar">الرئيسي مركز افانت ماسك ، طريق</span>
+          </div>
+          <div class="addr-line">
+            <span class="en">Center,King Abdulaziz Road</span>
+            <span class="ar">الملك عبدالعزيز</span>
+          </div>
+        </div>
+
+        <div class="cus-vat">
+          <span class="lab-en">Cus VAT No:</span>
+          <span class="val">{{customerVat}}</span>
+          <span class="lab-ar">الرقم الضريبي للعميل</span>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="col-head">
+          <span class="en">Invoice Details</span>
+          <span class="ar">تفاصيل الفاتورة</span>
+        </div>
+
+        <div class="kv-row">
+          <span class="lab-en">Document No.:</span>
+          <span class="val">{{documentNumber}}</span>
+          <span class="lab-ar">رقم الفاتورة:</span>
+        </div>
+        <div class="kv-row">
+          <span class="lab-en">Page No.:</span>
+          <span class="val">{{pageNumber}}</span>
+          <span class="lab-ar">رقم الصفحة:</span>
+        </div>
+        <div class="kv-row date-row">
+          <span class="lab-en">Date:</span>
+          <span class="val">{{issuedateTime}}</span>
+          <span class="lab-ar">التاريخ:</span>
+        </div>
+        <div class="kv-row ref-row">
+          <span class="lab-en">Costomer Reff:</span>
+          <span class="val">{{customerReference}}</span>
+          <span class="lab-ar">مرجع العميل:</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Vehicle Details -->
+    <table class="vehicle">
+      <thead>
+        <tr>
+          <th class="h-en" colspan="3">Vehicle Details</th>
+          <th class="h-ar" colspan="3">تفاصيل المركبة</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="le">Model</td>
+          <td class="v">{{vehicleModel}}</td>
+          <td class="la">موديل السيارة:</td>
+          <td class="le">Chassis No:</td>
+          <td class="v">{{chassisNumber}}</td>
+          <td class="la">رقم الشاسيه:</td>
+        </tr>
+        <tr>
+          <td class="le">Model Yr</td>
+          <td class="v">{{modelYear}}</td>
+          <td class="la">سنة الموديل:</td>
+          <td class="le">Color:</td>
+          <td class="v">{{vehicleColor}}</td>
+          <td class="la">اللون الخارجي:</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 4. Price Summary -->
+    <div class="prices-wrap">
+      <div class="prices">
+        <table>
+          <tr>
+            <td class="pe">Price Excl VAT</td>
+            <td class="pv">{{totalPriceAfterDiscount}}</td>
+            <td class="pa">السعر بدون ض ق م:</td>
+          </tr>
+          <tr>
+            <td class="pe">VAT 15%</td>
+            <td class="pv">{{totalVat}}</td>
+            <td class="pa">الضريبة 15%</td>
+          </tr>
+          <tr>
+            <td class="pe">Net Inc VAT</td>
+            <td class="pv">{{totalPriceWithVat}}</td>
+            <td class="pa">السعر شامل ض ق م:</td>
+          </tr>
+          <tr>
+            <td class="pe">Regsitration Fees</td>
+            <td class="pv">{{registrationFee}}</td>
+            <td class="pa">رسوم التسجيل:</td>
+          </tr>
+          <tr>
+            <td class="pe">Down Payment</td>
+            <td class="pv">{{totalDiscount}}</td>
+            <td class="pa">الدفعة المقدمة:</td>
+          </tr>
+          <tr class="dash">
+            <td></td>
+            <td colspan="1"><span class="dash-line"></span></td>
+            <td></td>
+          </tr>
+          <tr class="total">
+            <td class="pe">Net Due Amount</td>
+            <td class="pv">{{payableAmount}}</td>
+            <td class="pa">صافي المستحق:</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- 5. Signature -->
+    <div class="signature">
+      <div class="label">توقيع مدير المبيعات</div>
+      <div class="sig-value">{{salesManagerSignature}}</div>
+      <hr class="sig-line" />
+    </div>
+  </article>
+</body>
+</html>

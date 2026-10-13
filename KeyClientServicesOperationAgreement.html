@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>اتفاقية تشغيل خدمات كبار العملاء</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+      text-align: right;
+      background: #fff;
+      color: #000;
+      font-family: "Traditional Arabic", "Arial", "Tahoma", "Segoe UI", sans-serif;
+      font-size: 15px;
+      line-height: 1.55;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      box-sizing: border-box;
+      padding: 15mm;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto;
+      background: #fff;
+    }
+
+    .page-break {
+      page-break-after: always;
+      break-after: page;
+    }
+
+    .page-2 {
+      page-break-before: always;
+      break-before: page;
+    }
+
+    @media screen {
+      body {
+        background: #d9d9d9;
+        padding: 12px 0;
+      }
+
+      .page {
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.15);
+        margin-bottom: 12px;
+      }
+    }
+
+    .title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 1.45;
+      margin-bottom: 30px;
+    
+    }
+
+    .title .subtitle {
+      display:inline-block;
+      font-size: 25px;
+      margin-top: 2px;
+    }
+
+    .date-line,
+    .intro,
+    .section,
+    .notes,
+    .clause,
+    .signatures {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .date-line {
+      margin-bottom: 6px;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .intro {
+      margin-bottom: 8px;
+      font-size: 13px;
+    }
+
+    .section {
+      margin-bottom: 8px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .section-heading {
+      font-weight: bold;
+      margin-bottom: 2px;
+      font-size: 13px;
+    }
+
+    .section p {
+      text-align: justify;
+      text-justify: inter-word;
+      margin: 0 0 1px;
+    }
+
+    .notes {
+      margin: 8px 0 10px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .notes .label {
+      font-weight: bold;
+    }
+
+    .notes p {
+      text-align: justify;
+      text-justify: inter-word;
+      margin-top: 2px;
+    }
+
+    .clause {
+      margin-bottom: 8px;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .clause-heading {
+      font-weight: bold;
+      margin-bottom: 1px;
+      font-size: 12.8px;
+    }
+
+    .clause p {
+      text-align: justify;
+      text-justify: inter-word;
+      margin: 0;
+    }
+
+    .signatures {
+      margin-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      gap: 18mm;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .sign-box {
+      width: 48%;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+
+    .sign-box .party {
+      font-weight: bold;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .sign-box p {
+      margin: 0 0 8px;
+      text-align: right;
+    }
+
+    .sign-line {
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page page-break">
+    <h1 class="title">
+      اتفاقية تشغيل خدمات كبار العملاء
+      <span class="subtitle">(تقديم خدمات تسويقية نيابة عن الغير)</span>
+    </h1>
+
+    <p class="date-line">إنه في تاريخ: {{agreementDate}}</p>
+    <p class="intro">تم إبرام هذه الاتفاقية بين الأطراف التالية</p>
+
+    <div class="section">
+      <div class="section-heading">الطرف الأول:</div>
+      <p>مؤسسة {{firstPartyName}} للتسويق الإلكتروني</p>
+      <p>العنوان: {{firstPartyAddress}}</p>
+      <p>رقم السجل التجاري: {{commercialRegistrationNumber}}</p>
+      <p>ويمثله في هذه الاتفاقية السيد / {{firstPartyRepresentative}} ... {{representativeJobTitle}}</p>
+    </div>
+
+    <div class="section">
+      <div class="section-heading">الطرف الثاني:</div>
+      <p>{{secondPartyName}}</p>
+      <p>المملكة العربية السعودية - ترخيص رقم: {{licenseNumber}}</p>
+    </div>
+<hr>
+    <div class="section">
+      <div class="section-heading">معلومات الحساب البنكي الخاص بالطرف الأول:</div>
+      <p>البنك: {{bankName}}</p>
+      <p>رقم الحساب: {{accountNumber}}</p>
+      <p>IBAN: {{iban}}</p>
+      <p>الرقم الضريبي: {{vatNumber}}</p>
+    </div>
+<hr>
+    <div class="notes">
+      <div class="label">ملاحظات:</div>
+      <p>هذه الاتفاقية موزعة على صفحتين، وقد اتفق الطرفان بكامل أهليتهما على ما يلي:</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">1. مدة الاتفاقية</div>
+      <p>يلتزم الطرفان بمقتضى هذه الاتفاقية لمدة عام ميلادي من تاريخ التوقيع، وتتجدد تلقائيًا ما لم يُخطر أحد الطرفين الآخر برغبته في إنهائها. كما يمكن تعديل بنود هذه الاتفاقية بموافقة الطرفين، ويحق لأي منهما إلغاء الاتفاقية مع مراعاة فترة إخطار مدتها {{noticePeriodDays}} يوماً.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">2. الملكية</div>
+      <p>يقر الطرف الثاني بملكيته للمعرض أو أحقيته في إدارته بموجب توكيل رسمي، ويتعهد بتقديم ما يثبت ذلك عند الطلب.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">3. تفويض التسويق</div>
+      <p>يفوض الطرف الثاني الطرف الأول بالقيام بجميع أعمال التسويق والدعاية والإعلان لبيع السيارات عبر الموقع والتطبيق وحسابات التواصل الاجتماعي الخاصة بمؤسسة {{firstPartyName}}.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">4. عروض الأسعار</div>
+      <p>يلتزم الطرف الثاني بتقديم كافة عروض الأسعار المطلوبة، على أن تكون الأسعار متطابقة مع أسعار البطاقة الجمركية من الطرف الأول، وذلك فور طلبها.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">5. توريد السيارات</div>
+      <p>يلتزم الطرف الثاني بتوفير السيارات المطلوبة عن طريق الطرف الأول بعد وصول التعميد، وذلك خلال يومي عمل، سواء كانت السيارات متوافرة في المعرض أو من معرض آخر. وفي حال عدم توافرها، فلا يتحمل الطرف الثاني أية مسؤولية.</p>
+    </div>
+  </div>
+
+  <div class="page page-2">
+    <div class="clause">
+      <div class="clause-heading">6. خلو السيارة من العيوب</div>
+      <p>يتحمل الطرف الثاني المسؤولية الكاملة عن خلو السيارة من أي عيوب، وعليه الإفصاح عن أي عيب موجود مسبقًا.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">7. العمولة</div>
+      <p>يستحق الطرف الأول عمولة نسبتها 60% من قيمة صافي الربح لكل سيارة يتم بيعها عن طريقه.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">8. موافقة جهة التمويل</div>
+      <p>يتولى الطرف الأول إنهاء الإجراءات اللازمة للحصول على موافقة جهة التمويل على البيع للعميل، وينتهي دور الطرف الأول بمجرد صدور التعميد من شركة التمويل.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">9. تحويل العمولة</div>
+      <p>يلتزم الطرف الثاني بتحويل عمولة الطرف الأول إلى حسابه البنكي خلال أسبوع من استلام العميل للسيارة.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">10. العدول عن الشراء</div>
+      <p>في حال قام العميل بالعدول عن الشراء بعد صدور التعميد وقبل إصدار اللوحات، لا يستحق الطرف الأول عمولة عن السيارة. وإذا قام العميل بالعدول عن الشراء بعد إصدار اللوحات، يستحق الطرف الأول عمولته شريطة تحويل المبلغ من جهة التمويل.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">11. تحصيل المطالبات</div>
+      <p>يعتبر الطرف الثاني مسؤولاً بصورة كاملة عن تحصيل أي مطالبات متعلقة بمبيعاته من جهات التمويل المختلفة.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">12. التواصل مع العملاء</div>
+      <p>تُعتبر هذه الاتفاقية بمثابة تفويض للطرف الأول بالتواصل مع العملاء بناءً على العقد المبرم بين الطرف الثاني وجهة التمويل.</p>
+    </div>
+
+    <div class="clause">
+      <div class="clause-heading">13. الإلغاء أو التعليق</div>
+      <p>في حال قيام الطرف الثاني بانتهاك أي من شروط هذه الاتفاقية، يحق للطرف الآخر إلغاء أو تعليق الاتفاقية بعد إخطار مسبق.</p>
+    </div>
+
+    <div class="signatures">
+      <div class="sign-box">
+        <div class="party">الطرف الأول:</div>
+        <p>الاسم: {{firstPartyRepresentative}}</p>
+        <p>توقيع المدير التنفيذي: <span class="sign-line">__________________</span></p>
+      </div>
+      <div class="sign-box">
+        <div class="party">الطرف الثاني:</div>
+        <p>الاسم: {{secondPartyOwner}}</p>
+        <p>توقيع المالك: <span class="sign-line">__________________</span></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
